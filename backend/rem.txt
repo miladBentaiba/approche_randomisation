@@ -1,0 +1,42 @@
+
+E:\PFE\PFE\PlateForme\PFEV0\Jupiter\server\app.js
+    9:15  error  'require' is not defined                         no-undef
+   10:12  error  'require' is not defined                         no-undef
+   11:5   error  'favicon' is assigned a value but never used     no-unused-vars
+   11:15  error  'require' is not defined                         no-undef
+   12:14  error  'require' is not defined                         no-undef
+   13:20  error  'require' is not defined                         no-undef
+   14:18  error  'require' is not defined                         no-undef
+   15:9   error  'logger' is already defined                      no-redeclare
+   15:18  error  'require' is not defined                         no-undef
+   16:12  error  'require' is not defined                         no-undef
+   17:5   error  'formidable' is assigned a value but never used  no-unused-vars
+   17:18  error  'require' is not defined                         no-undef
+   21:16  error  'require' is not defined                         no-undef
+   24:1   error  'require' is not defined                         no-undef
+   26:1   error  'require' is not defined                         no-undef
+   41:14  error  'require' is not defined                         no-undef
+   42:22  error  'require' is not defined                         no-undef
+   43:21  error  'require' is not defined                         no-undef
+   44:22  error  'require' is not defined                         no-undef
+   45:19  error  'require' is not defined                         no-undef
+   47:17  error  'require' is not defined                         no-undef
+   50:28  error  '__dirname' is not defined                       no-undef
+   52:34  error  '__dirname' is not defined                       no-undef
+   54:26  error  '__dirname' is not defined                       no-undef
+   62:34  error  '__dirname' is not defined                       no-undef
+   64:34  error  '__dirname' is not defined                       no-undef
+   79:26  error  '__dirname' is not defined                       no-undef
+   93:34  error  'next' is defined but never used                 no-unused-vars
+  103:37  error  'next' is defined but never used                 no-unused-vars
+  104:71  error  'response' is defined but never used             no-unused-vars
+  116:33  error  'next' is defined but never used                 no-unused-vars
+  123:5   error  'module' is not defined                          no-undef
+  123:16  error  'require' is not defined                         no-undef
+  127:5   error  Unexpected console statement                     no-console
+  129:2   error  Unnecessary semicolon                            no-extra-semi
+  155:1   error  'module' is not defined                          no-undef
+
+✖ 36 problems (36 errors, 0 warnings)
+  1 error, 0 warnings potentially fixable with the `--fix` option.
+

@@ -1,0 +1,22 @@
+
+<div class="row">
+  <div class="col-md-12">
+    <nb-card>
+      <nb-card-header></nb-card-header>
+         <nb-card-body class="col-md-12">
+          <p-dataTable #dt [value]="cars" [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]"  sortMode="multiple" exportFilename="cars" [(selection)]="selectedCars" selectionMode="multiple" [metaKeySelection]="false">
+            <p-header>
+              <div class="ui-helper-clearfix">
+                <button type="button" pButton icon="fa-file-o" iconPos="left" label="All Data" (click)="dt.exportCSV()" style="float:left"></button>
+                <button type="button" pButton icon="fa-file" iconPos="left" label="Selection Only" (click)="dt.exportCSV({selectionOnly:true})" style="float:right"></button>
+              </div>
+            </p-header>
+            <p-column field="vin" header="Vin" [sortable]="true"></p-column>
+            <p-column field="year" header="Year" [sortable]="true"></p-column>
+            <p-column field="brand" header="Brand" [sortable]="true"></p-column>
+            <p-column field="color" header="Color" [sortable]="true"></p-column>
+          </p-dataTable>
+        </nb-card-body>
+    </nb-card>
+  </div>
+</div>
