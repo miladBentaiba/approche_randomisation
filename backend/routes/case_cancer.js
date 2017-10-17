@@ -1,11 +1,10 @@
 var express = require('express');
- var  routerCaseCancer = express.Router();
+var  routerCaseCancer = express.Router();
  
 var caseCancerCtrl = require('../controllers/caseCancerCtrl');
  
  routerCaseCancer.get('/casecancer',caseCancerCtrl.getAll);
- 
- 
+
 /* GET SINGLE Category BY ID */
 routerCaseCancer.get('/casecancer/:_id', caseCancerCtrl.get);
 

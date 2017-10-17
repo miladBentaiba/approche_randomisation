@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 var gracefulShutdown;
-var dbURI = 'mongodb://localhost/pandoraDB';
+var dbURI = 'mongodb://localhost/mydb';
 if (process.env.NODE_ENV === 'production') {
   dbURI = process.env.MONGOLAB_URI;
 }
@@ -55,4 +55,4 @@ process.on('SIGTERM', function() {
 // BRING IN YOUR SCHEMAS & MODELS
 require('./user');
 require('./case_cancer');
-require('./case_weight');
+require('./cancer_weight');

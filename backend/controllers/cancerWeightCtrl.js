@@ -1,8 +1,8 @@
 var mongoose = require('mongoose');
-var CaseWeight = require('../models/case_weight').CaseWeight;
+var CancerWeight = require('../models/cancer_weight').CancerWeight;
 /** create function to create CaseWeight */
 exports.create = function (req, res) {
-var caseWeight =new CaseWeight({
+var cancerWeight =new CancerWeight({
     BI: req.body.BI,
     age: req.body.age,
     shape: req.body.shape,
@@ -23,7 +23,7 @@ if (err) {
 })};
 /******************/
 exports.getAll = function (req, res) {
-   CaseWeight.find({}, function(err, dbs) {
+    CancerWeight.find({}, function(err, dbs) {
        var dbMap = [];
     dbs.forEach(function(db) {
       dbMap.push( db);
@@ -34,7 +34,7 @@ exports.getAll = function (req, res) {
 
 /** getCaseWeight function to get CaseWeight by id. */
 exports.get = function (req, res) {
-     CaseWeight.findById(req.params._id, function(err, db) {
+    CancerWeight.findById(req.params._id, function(err, db) {
             if (err)
                 res.send(err);
             res.json(db);
@@ -45,7 +45,7 @@ exports.get = function (req, res) {
 exports.update = function (req, res) {
    // This would likely be inside of a PUT request, since we're updating an existing document, hence the req.params.dbId.
 // Find the existing resource by ID
-CaseWeight.findOneAndUpdate(req.params._id, req.body, function (err, db) {  
+    CancerWeight.findOneAndUpdate(req.params._id, req.body, function (err, db) {
     // Handle any possible CaseWeight errors
       if (err)
                 res.send(err);
@@ -54,7 +54,7 @@ CaseWeight.findOneAndUpdate(req.params._id, req.body, function (err, db) {
 }
 /** removeCaseWeight function to get CaseWeight by id. */
 exports.delete = function (req, res) {
-  CaseWeight.findOneAndRemove(req.params._id, function(err, result) {
+    CancerWeight.findOneAndRemove(req.params._id, function(err, result) {
     if(err) { throw err; }
     res.send(result);  
   });
