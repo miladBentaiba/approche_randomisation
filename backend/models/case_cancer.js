@@ -19,7 +19,7 @@ var CaseCancerSchema = new mongoose.Schema({
     by:String,
     date_maj: { type: Date, default: Date.now },
     date_save: { type: Date, default: Date.now }
-});
+}, { collection: 'case_cancer' });
  // on every save, add the date
 CaseCancerSchema.pre('save', function(next) {
   // get the current date
