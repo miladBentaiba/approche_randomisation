@@ -37,6 +37,7 @@ var routerLHSCancer=require('./routes/lhs_cancer');
 var routerRHSCancer=require('./routes/rhs_cancer');
 var routerRHSThyroid=require('./routes/rhs_thyroid');
 var routerLHSThyroid=require('./routes/lhs_thyroid');
+var routerNiveau=require('./routes/niveau');
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(logger('dev'));
@@ -63,6 +64,7 @@ app.use('/api', routerLHSCancer);
 app.use('/api', routerRHSCancer);
 app.use('/api', routerRHSThyroid);
 app.use('/api', routerLHSThyroid);
+app.use('/api', routerNiveau);
 // [SH] Otherwise render the index.html page for the Angular SPA
 // [SH] This means we don't have to map all of the SPA routes in Express
 /*app.use(function(req, res) {
