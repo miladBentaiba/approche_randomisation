@@ -42,5 +42,5 @@ LHSCancerSchema.pre('save', function(next) {
 var LHSCancer = mongoose.model('LHSCancer', LHSCancerSchema);
 /** export schema */
 module.exports = {
-    ThyroidWeight: LHSCancer
+    LHSCancer: LHSCancer
 };

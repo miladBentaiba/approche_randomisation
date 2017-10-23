@@ -15,7 +15,7 @@ exports.create = function (req, res) {
         "delegue.shape.lobular": req.body.delegue.shape.lobular,
         "delegue.shape.irregular": req.body.delegue.shape.irregular,
         "delegue.margin.circumscribed": req.body.delegue.margin.circumscribed,
-        "delegue.margin.microlobulated": req.body,
+        "delegue.margin.microlobulated": req.body.delegue.margin.microlobulated,
         "delegue.margin.obscured": req.body.delegue.margin.obscured,
         "delegue.margin.ill_defined": req.body.delegue.margin.ill_defined,
         "delegue.margin.spiculated": req.body.delegue.margin.spiculated,
@@ -25,7 +25,7 @@ exports.create = function (req, res) {
         "delegue.dencity.fat_containing": req.body.delegue.dencity.fat_containing,
         "cases":req.body.cases
     });
-    LHSCancer.save(function (err) {
+    lHSCancer.save(function (err) {
         if (err) {
             console.log(err);
             res.send({

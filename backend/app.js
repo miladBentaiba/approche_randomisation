@@ -33,11 +33,14 @@ var routerCaseCancer=require('./routes/case_cancer');
 var routerCancerWeight=require('./routes/cancer_weight');
 var routerCaseThyroid=require('./routes/case_thyroid');
 var routerThyroidWeight=require('./routes/thyroid_weight');
-
+var routerLHSCancer=require('./routes/lhs_cancer');
+var routerRHSCancer=require('./routes/rhs_cancer');
+var routerRHSThyroid=require('./routes/rhs_thyroid');
+var routerLHSThyroid=require('./routes/lhs_thyroid');
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(logger('dev'));
- app.use(bodyParser.json());
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
@@ -56,6 +59,10 @@ app.use('/api', routerCancerWeight);
 app.use('/api', routerCaseCancer);
 app.use('/api', routerCaseThyroid);
 app.use('/api', routerThyroidWeight);
+app.use('/api', routerLHSCancer);
+app.use('/api', routerRHSCancer);
+app.use('/api', routerRHSThyroid);
+app.use('/api', routerLHSThyroid);
 // [SH] Otherwise render the index.html page for the Angular SPA
 // [SH] This means we don't have to map all of the SPA routes in Express
 /*app.use(function(req, res) {

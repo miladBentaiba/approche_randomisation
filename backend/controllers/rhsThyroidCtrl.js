@@ -1,13 +1,13 @@
 var mongoose = require('mongoose');
-var RHSCancer = require('../models/RHS_cancer').RHSCancer;
+var RHSThyroid = require('../models/RHS_thyroid').RHSThyroid;
 /** create function to create CaseCancer */
 exports.create = function (req, res) {
     console.log( req.body);
-    var rHSCancer =new RHSCancer({
+    var rHSThyroid =new RHSThyroid({
         "delegue": req.body.delegue,
         "cases": req.body.cases
     });
-    rHSCancer.save(function (err) {
+    rHSThyroid.save(function (err) {
         if (err) {
             console.log(err);
             res.send({
@@ -15,14 +15,14 @@ exports.create = function (req, res) {
             });
         } else {
             res.send({
-                message: 'the CaseCancer has been saved'
+                message: 'the CaseThyroid has been saved'
             });
         }
         // saved!
     })};
 /******************/
 exports.getAll = function (req, res) {
-    RHSCancer.find({}, function(err, dbs) {
+    RHSThyroid.find({}, function(err, dbs) {
         var dbMap = [];
         dbs.forEach(function(db) {
             dbMap.push( db);
@@ -33,7 +33,7 @@ exports.getAll = function (req, res) {
 
 /** getCaseCancer function to get CaseCancer by id. */
 exports.get = function (req, res) {
-    RHSCancer.findById(req.params._id, function(err, db) {
+    RHSThyroid.findById(req.params._id, function(err, db) {
         if (err)
             res.send(err);
         res.json(db);
@@ -44,7 +44,7 @@ exports.get = function (req, res) {
 exports.update = function (req, res) {
     // This would likely be inside of a PUT request, since we're updating an existing document, hence the req.params.dbId.
 // Find the existing resource by ID
-    RHSCancer.findOneAndUpdate(req.params._id, req.body, function (err, db) {
+    RHSThyroid.findOneAndUpdate(req.params._id, req.body, function (err, db) {
         // Handle any possible CaseCancer errors
         if (err)
             res.send(err);
@@ -53,7 +53,7 @@ exports.update = function (req, res) {
 }
 /** removeCaseCancer function to get CaseCancer by id. */
 exports.delete = function (req, res) {
-    RHSCancer.findOneAndRemove(req.params._id, function(err, result) {
+    RHSThyroid.findOneAndRemove(req.params._id, function(err, result) {
         if(err) { throw err; }
         res.send(result);
     });

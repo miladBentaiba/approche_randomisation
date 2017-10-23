@@ -14,5 +14,5 @@ RHSCancerSchema.pre('save', function(next) {
 var RHSCancer = mongoose.model('RHSCancer', RHSCancerSchema);
 /** export schema */
 module.exports = {
-    ThyroidWeight: RHSCancer
+    RHSCancer: RHSCancer
 };
