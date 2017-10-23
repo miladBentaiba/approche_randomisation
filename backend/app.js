@@ -30,8 +30,9 @@ var app = express();
  
 var router = require('./routes/index');
 var routerCaseCancer=require('./routes/case_cancer');
-var routerCaseWeight=require('./routes/case_weight');
-
+var routerCancerWeight=require('./routes/cancer_weight');
+var routerCaseThyroid=require('./routes/case_thyroid');
+var routerThyroidWeight=require('./routes/thyroid_weight');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
@@ -51,8 +52,10 @@ app.use(express.static(path.join(__dirname, 'client')));
 app.use(cors());
 app.use('/api', passport.initialize(), router.protected);
 app.use('/api', router.unprotected);
-app.use('/api', routerCaseWeight);
+app.use('/api', routerCancerWeight);
 app.use('/api', routerCaseCancer);
+app.use('/api', routerCaseThyroid);
+app.use('/api', routerThyroidWeight);
 // [SH] Otherwise render the index.html page for the Angular SPA
 // [SH] This means we don't have to map all of the SPA routes in Express
 /*app.use(function(req, res) {
