@@ -2,8 +2,8 @@ var mongoose = require('mongoose');
 var CaseThyroidSchema = new mongoose.Schema({
     problem:{
         T3: Number,
-        thyro: Number,
-        trido: Number,
+        Thyro: Number,
+        Trido: Number,
         TSH: Number,
         TS: Number,
     },

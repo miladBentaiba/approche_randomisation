@@ -1,7 +1,7 @@
 var express = require('express');
 var  routerCaseThyroid = express.Router();
 
-var caseThyroidCtrl = require('../controllers/cancerThyroidCtrl');
+var caseThyroidCtrl = require('../controllers/caseThyroidCtrl');
 
 routerCaseThyroid.get('/casethyroid',caseThyroidCtrl.getAll);
 
@@ -13,7 +13,6 @@ routerCaseThyroid.post('/casethyroid/', caseThyroidCtrl.create);
 
 /* UPDATE Category */
 routerCaseThyroid.put('/casethyroid/:_id', caseThyroidCtrl.update);
-
 
 /* DELETE Category */
 routerCaseThyroid.delete('/casethyroid/:_id', caseThyroidCtrl.delete);

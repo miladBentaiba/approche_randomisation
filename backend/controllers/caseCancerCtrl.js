@@ -2,8 +2,23 @@ var mongoose = require('mongoose');
 var CaseCancer = require('../models/case_cancer').CaseCancer;
 /** create function to create CaseCancer */
 exports.create = function (req, res) {
-    console.log( req.body.problem);
-    var caseCancer =new CaseCancer({problem: req.body.problem});
+    console.log( req.body);
+    var caseCancer =new CaseCancer({
+        "problem.BI": req.body.problem.BI,
+        "problem.age": req.body.problem.age,
+        "problem.shape": req.body.problem.shape,
+        "problem.margin": req.body.problem.margin,
+        "problem.dencity": req.body.problem.dencity,
+        "solution":req.body.solution,
+        "validity.coherence":req.body.validity.coherence,
+        "validity.stochastique":req.body.validity.stochastique,
+        "validity.regles":req.body.validity.regles,
+        "validity.expert":req.body.validity.expert,
+        "nb_occurence":req.body.validity.expert,
+        "by":req.body.by,
+        "date_maj":req.body.date_maj ,
+        "date_save":req.body.date_save
+    });
     caseCancer.save(function (err) {
 if (err) {
       console.log(err);
@@ -19,11 +34,9 @@ if (err) {
 })};
 /******************/
 exports.getAll = function (req, res) {
-    console.log("I AM IN");
    CaseCancer.find({}, function(err, dbs) {
        var dbMap = [];
     dbs.forEach(function(db) {
-        console.log("I AM IN here");
         dbMap.push( db);
     });
     res.send(dbMap);  

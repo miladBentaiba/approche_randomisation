@@ -56,3 +56,6 @@ process.on('SIGTERM', function() {
 require('./user');
 require('./case_cancer');
 require('./cancer_weight');
+require('./case_thyroid');
+require('./thyroid_weight');
+require('./LHS_cancer');

@@ -14,7 +14,6 @@ var CaseCancerSchema = new mongoose.Schema({
         regles:Boolean,
         expert:Boolean
     },
-
     nb_occurence:Number,
     by:String,
     date_maj: { type: Date, default: Date.now },
