@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var Thyroid = mongoose.model('CaseThyroid');
 var Cancer = mongoose.model('CaseCancer');
 var NiveauSchema = new mongoose.Schema({
-    rang: Number,
+    rang:Number,
     debut:Number,
     fin: Number,
     case_cancer: [Cancer.schema],

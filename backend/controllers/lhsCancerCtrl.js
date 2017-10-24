@@ -1,5 +1,7 @@
 var mongoose = require('mongoose');
 var LHSCancer = require('../models/LHS_cancer').LHSCancer;
+var RHSCancer = require('../models/RHS_cancer').RHSCancer;
+
 /** create function to create CaseCancer */
 exports.create = function (req, res) {
     console.log( req.body);

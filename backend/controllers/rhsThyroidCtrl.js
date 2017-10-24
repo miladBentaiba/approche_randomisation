@@ -58,3 +58,5 @@ exports.delete = function (req, res) {
         res.send(result);
     });
 }
+
+//db.RHS_cancer.update({delegue: 1},{$push:{'cases':{'_id':ObjectId("59e249d7b5ed4c35fd36c766")} }})
