@@ -30,14 +30,14 @@ var app = express();
  
 var router = require('./routes/index');
 var routerCaseCancer=require('./routes/case_cancer');
-var routerCancerWeight=require('./routes/cancer_weight');
 var routerCaseThyroid=require('./routes/case_thyroid');
-var routerThyroidWeight=require('./routes/thyroid_weight');
 var routerLHSCancer=require('./routes/lhs_cancer');
 var routerRHSCancer=require('./routes/rhs_cancer');
 var routerRHSThyroid=require('./routes/rhs_thyroid');
 var routerLHSThyroid=require('./routes/lhs_thyroid');
 var routerNiveau=require('./routes/niveau');
+var routerWeightCancer=require('./routes/weight_cancer');
+var routerWeightThyroid=require('./routes/weight_thyroid');
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(logger('dev'));
@@ -56,15 +56,16 @@ app.use(express.static(path.join(__dirname, 'client')));
 app.use(cors());
 app.use('/api', passport.initialize(), router.protected);
 app.use('/api', router.unprotected);
-app.use('/api', routerCancerWeight);
 app.use('/api', routerCaseCancer);
 app.use('/api', routerCaseThyroid);
-app.use('/api', routerThyroidWeight);
 app.use('/api', routerLHSCancer);
 app.use('/api', routerRHSCancer);
 app.use('/api', routerRHSThyroid);
 app.use('/api', routerLHSThyroid);
 app.use('/api', routerNiveau);
+app.use('/api', routerWeightCancer);
+app.use('/api', routerWeightThyroid);
+
 // [SH] Otherwise render the index.html page for the Angular SPA
 // [SH] This means we don't have to map all of the SPA routes in Express
 /*app.use(function(req, res) {

@@ -38,11 +38,11 @@ if (err) {
 /******************/
 exports.getAll = function (req, res) {
     CaseCancer.find({}, function(err, dbs) {
-       var dbMap = [];
-    dbs.forEach(function(db) {
-        dbMap.push( db);
-    });
-    res.send(dbMap);  
+        var dbMap = [];
+        dbs.forEach(function(db) {
+            dbMap.push( db);
+        });
+        res.send(dbMap);
   });
 };
 
