@@ -1,6 +1,8 @@
 var mongoose = require('mongoose');
 var CaseCancer = require('../models/case_cancer').CaseCancer;
-var RHSCancer = require('../models/RHS_cancer').RHSCancer;
+var CaseThyroid = require('../models/case_thyroid').CaseThyroid;
+var Niveau = require('../models/niveau').Niveau;
+
 mongoose.connect('mongodb://localhost/mydb');
 
 var cases = [];
@@ -14,10 +16,9 @@ CaseCancer.find({}, function(err, dbs) {
     for (i=0;i<cases.length;i++)
     {
         //chercher niveau
-        var rhs ;
         var cas = cases[i];
         console.log(cas);
-        RHSCancer.findOneAndUpdate({"debut":1}, {$push: {"cases": {
+        Niveau.findOneAndUpdate({"debut":1}, {$push: {"case_cancer": {
                 "solution":cas.solution,
                 "nb_occurence":cas.nb_occurence,
                 "by":cas.by,
@@ -41,10 +42,8 @@ CaseCancer.find({}, function(err, dbs) {
             function(err, model) {
                 console.log(err);
                 console.log(model);
-            });
 
-        //MAJ délégué
-        //appliquer la randomisation en boucle
-        //calculer la validité stochastique
+            }
+        );
     }
 });
