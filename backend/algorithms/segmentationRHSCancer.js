@@ -51,3 +51,4 @@ CaseCancer.find({}, function(err, dbs) {
         //calculer la validité stochastique
     }
 });
+
