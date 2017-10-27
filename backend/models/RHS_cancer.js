@@ -16,3 +16,5 @@ var RHSCancer = mongoose.model('RHSCancer', RHSCancerSchema);
 module.exports = {
     RHSCancer: RHSCancer
 };
+
+//db.RHS_cancer.update({$push:{'cases':{'_id':ObjectId("59e249d7b5ed4c35fd36c765")} }})

@@ -1,5 +1,7 @@
 var mongoose = require('mongoose');
 var CaseCancer = require('../models/case_cancer').CaseCancer;
+var RHSCancer = require('../models/RHS_cancer').RHSCancer;
+
 /** create function to create CaseCancer */
 exports.create = function (req, res) {
     console.log( req.body);
@@ -19,13 +21,14 @@ exports.create = function (req, res) {
         "date_maj":req.body.date_maj ,
         "date_save":req.body.date_save
     });
-    caseCancer.save(function (err) {
+    caseCancer.save(function (err, insertedItem) {
 if (err) {
       console.log(err);
       res.send({
         message: 'something went wrong'
       });
     } else {
+    console.log(insertedItem._id);
       res.send({
         message: 'the CaseCancer has been saved'
       });
@@ -34,12 +37,12 @@ if (err) {
 })};
 /******************/
 exports.getAll = function (req, res) {
-   CaseCancer.find({}, function(err, dbs) {
-       var dbMap = [];
-    dbs.forEach(function(db) {
-        dbMap.push( db);
-    });
-    res.send(dbMap);  
+    CaseCancer.find({}, function(err, dbs) {
+        var dbMap = [];
+        dbs.forEach(function(db) {
+            dbMap.push( db);
+        });
+        res.send(dbMap);
   });
 };
 

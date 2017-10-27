@@ -55,7 +55,11 @@ process.on('SIGTERM', function() {
 // BRING IN YOUR SCHEMAS & MODELS
 require('./user');
 require('./case_cancer');
-require('./cancer_weight');
+require('./weight_cancer');
 require('./case_thyroid');
-require('./thyroid_weight');
 require('./LHS_cancer');
+require('./RHS_cancer');
+require('./niveau');
+require('./LHS_thyroid');
+require('./RHS_thyroid');
+require('./weight_thyroid');
