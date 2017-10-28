@@ -11,6 +11,4 @@ routerParameter.post('/parameter/', parameterCtrl.create);
 /* UPDATE Category */
 routerParameter.put('/parameter', parameterCtrl.update);
 
-
-
 module.exports = routerParameter;
