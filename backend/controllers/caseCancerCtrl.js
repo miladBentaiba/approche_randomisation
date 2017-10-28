@@ -37,13 +37,21 @@ if (err) {
 })};
 /******************/
 exports.getAll = function (req, res) {
-    CaseCancer.find({}, function(err, dbs) {
-        var dbMap = [];
-        dbs.forEach(function(db) {
-            dbMap.push( db);
+    if (Object.keys(req.query).length == 0){
+        CaseCancer.find({}, function(err, dbs) {
+            var dbMap = [];
+            dbs.forEach(function(db) {
+                dbMap.push( db);
+            });
+            res.send(dbMap);
         });
-        res.send(dbMap);
-  });
+    }
+    else {
+        console.log(JSON.stringify(req.query));
+        CaseCancer.findOne(req.query,function(err, dbs) {
+            res.send(dbs);
+        });
+    }
 };
 
 /** getCaseCancer function to get CaseCancer by id. */
@@ -52,7 +60,7 @@ exports.get = function (req, res) {
             if (err)
                 res.send(err);
             res.json(db);
-        });
+     });
 };
 
 /** updateCaseCancer function to get CaseCancer by id. */
@@ -72,4 +80,14 @@ exports.delete = function (req, res) {
     if(err) { throw err; }
     res.send(result);  
   });
-}
+};
+
+/** getCaseCancer function to get CaseCancer by id.
+exports.resolve = function (req, res) {
+
+    CaseCancer.find({"problem.age":req.query.age}, function(err, db) {
+        if (err)
+            res.send(err);
+        res.json(db);
+    });
+};*/

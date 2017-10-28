@@ -2,7 +2,7 @@ var express = require('express');
 var  routerCaseCancer = express.Router();
  
 var caseCancerCtrl = require('../controllers/caseCancerCtrl');
- 
+
 routerCaseCancer.get('/casecancer',caseCancerCtrl.getAll);
 
 /* GET SINGLE Category BY ID */
@@ -16,6 +16,7 @@ routerCaseCancer.put('/casecancer/:_id', caseCancerCtrl.update);
 
 /* DELETE Category */
 routerCaseCancer.delete('/casecancer/:_id', caseCancerCtrl.delete);
- 
- 
- module.exports = routerCaseCancer;
+
+
+
+module.exports = routerCaseCancer;
