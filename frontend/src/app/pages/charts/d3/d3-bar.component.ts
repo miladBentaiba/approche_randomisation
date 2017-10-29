@@ -18,9 +18,10 @@ import { NbThemeService } from '@nebular/theme';
 export class D3BarComponent implements OnDestroy {
 
   results = [
-    { name: 'Germany', value: 8940 },
-    { name: 'USA', value: 5000 },
-    { name: 'France', value: 7200 },
+    { name: 'Maladie de la thyroide (RàPC)', value: 78.16},
+    { name: 'Maladie de la thyroide (RàPC +Randomisation)', value: 95.53 },
+    { name: 'Cancer du sein (RàPC)', value: 79.71},
+    { name: 'Cancer du sein (RàPC +Randomisation)', value:  96.84   },
   ];
   showLegend = true;
   showXAxis = true;
@@ -34,7 +35,7 @@ export class D3BarComponent implements OnDestroy {
     this.themeSubscription = this.theme.getJsTheme().subscribe(config => {
       const colors: any = config.variables;
       this.colorScheme = {
-        domain: [colors.primaryLight, colors.infoLight, colors.successLight, colors.warningLight, colors.dangerLight],
+        domain: [colors.primaryLight, colors.infoLight, colors.primaryLight,  colors.infoLight],
       };
     });
   }

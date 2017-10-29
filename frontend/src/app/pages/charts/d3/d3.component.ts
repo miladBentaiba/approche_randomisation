@@ -5,4 +5,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./d3.component.scss'],
   templateUrl: './d3.component.html',
 })
-export class D3Component {}
+export class D3Component {
+
+}

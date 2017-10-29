@@ -1,22 +1,440 @@
 
+
+
 <div class="row">
+
   <div class="col-md-12">
     <nb-card>
-      <nb-card-header></nb-card-header>
-         <nb-card-body class="col-md-12">
-          <p-dataTable #dt [value]="cars" [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]"  sortMode="multiple" exportFilename="cars" [(selection)]="selectedCars" selectionMode="multiple" [metaKeySelection]="false">
-            <p-header>
-              <div class="ui-helper-clearfix">
-                <button type="button" pButton icon="fa-file-o" iconPos="left" label="All Data" (click)="dt.exportCSV()" style="float:left"></button>
-                <button type="button" pButton icon="fa-file" iconPos="left" label="Selection Only" (click)="dt.exportCSV({selectionOnly:true})" style="float:right"></button>
-              </div>
-            </p-header>
-            <p-column field="vin" header="Vin" [sortable]="true"></p-column>
-            <p-column field="year" header="Year" [sortable]="true"></p-column>
-            <p-column field="brand" header="Brand" [sortable]="true"></p-column>
-            <p-column field="color" header="Color" [sortable]="true"></p-column>
-          </p-dataTable>
-        </nb-card-body>
+      <nb-card-header class="row ">
+        <div id="custom-search-input" class=" col-lg-6 col-md-6">
+          <div class="input-group ">
+            <input required type="text" pInputText #gb class="  search-query form-control" placeholder="Enter a key word"/>
+            <span class="input-group-btn">
+         <button class="btn btn-success" type="button">
+          <span class=" fa fa-search"></span>
+        </button>
+      </span>
+          </div>
+        </div>
+        <div class=" actions pull-right">
+          <i (click)="refresh($event)" class="fa fa-refresh fa-lg"></i>
+          <i  data-toggle="modal" data-target="#ajoutModal" aria-hidden="true" class="fa fa-plus-circle fa-lg" ></i>
+          <i class="fa fa-times-circle  fa-lg" data-toggle="modal" data-target="#myModal" aria-hidden="true"></i>
+        </div>
+      </nb-card-header>
+      <nb-card-body class="col-md-12">
+        <div *ngIf="error" class="alert alert-danger alert-dismissable">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          <strong> Opération non autorisée </strong> Vous n'êtes pas autorisé à modifier les cas sélectionnés!
+        </div>
+        <div *ngIf="deleteError" class="alert alert-danger alert-dismissable">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          <strong> Opération non autorisée </strong> Vous n'êtes pas autorisé à supprimer les cas sélectionnés!        </div>
+        <p-dataTable *ngIf="cancer" #dt [value]="casecancer" [rows]="5"  [paginator]="true" [pageLinks]="3"
+                     [rowsPerPageOptions]="[5,10,20]" sortMode="multiple"
+                     exportFilename="casecancer" [(selection)]="selectedCasecancer"
+                     [metaKeySelection]="false" [style]="{'font-size': '12px'}"
+                     [responsive]="true" [headerCheckboxToggleAllPages]="true" [globalFilter]="gb" #dt>
+          <p-header>
+            <div class="ui-helper-clearfix">
+              <button type="button" class="btn btn-success" pButton icon="fa-file-o" iconPos="left" label="Exporter tout" (click)="dt.exportCSV()"
+                      style="float:left"></button>
+              <button type="button" class="btn btn-success" pButton icon="fa-file" iconPos="left" label="Exporter selected"
+                      (click)="dt.exportCSV({selectionOnly:true})" style="float:right"></button>
+            </div>
+          </p-header>
+
+          <p-headerColumnGroup>
+            <p-row>
+              <p-column   header="Problème" colspan="5" [style]="{'width':'300px'}"></p-column>
+              <p-column   header="Severité" [sortable]="true" rowspan="2"></p-column>
+              <p-column   header="Validité stochastique" [sortable]="true" rowspan="2">
+              </p-column>
+              <p-column   header="Date" [sortable]="true" rowspan="2"></p-column>
+              <p-column   header="Modifie" [sortable]="true" rowspan="2"></p-column>
+              <p-column  header="Par" [sortable]="true" rowspan="2" [style]="{'width':'150px'}"></p-column>
+              <p-column  header="Actions" [style]="{'width':'70px'}" rowspan="2">
+              </p-column>
+              <p-column  header="Status"  [sortable]="true" [style]="{'width':'90px'}" rowspan="2">
+
+              </p-column>
+              <p-column [style]="{'width':'38px' ,'height':'35px', 'background': '#f4f4f4','border':'0'  }"
+                        selectionMode="multiple" rowspan="2"></p-column>
+            </p-row>
+
+            <p-row>
+              <p-column  field="problem.BI"  header="BI" [sortable]="true"  >
+                <ng-template let-a="rowData" pTemplate="body">
+                  {{a.problem.BI}}
+                </ng-template>
+              </p-column>
+              <p-column field="problem.age"  header="Age" [sortable]="true">
+                <ng-template let-a="rowData" pTemplate="body">
+                  {{a.problem.Age}}
+                </ng-template>
+              </p-column>
+              <p-column field="problem.shape" header="Shape" [sortable]="true">
+                <ng-template let-a="rowData" pTemplate="body">
+                  {{a.problem.Shape}}
+                </ng-template>
+              </p-column>
+              <p-column field="problem.margin" header="Margin" [sortable]="true">
+                <ng-template let-a="rowData" pTemplate="body">
+                  {{a.problem.Margin}}
+                </ng-template>
+              </p-column>
+              <p-column field="problem.dencity" header="Dencity" [sortable]="true">
+                <ng-template let-a="rowData" pTemplate="body">
+                  {{a.problem.Dencity}}
+                </ng-template>
+              </p-column>
+            </p-row>
+          </p-headerColumnGroup>
+
+          <p-column field="problem.BI"  header="BI" [sortable]="true"  >
+            <ng-template let-a="rowData" pTemplate="body">
+              {{a.problem.BI}}
+            </ng-template>
+          </p-column>
+          <p-column field="problem.age"  header="Age" [sortable]="true">
+            <ng-template let-a="rowData" pTemplate="body">
+              {{a.problem.Age}}
+            </ng-template>
+          </p-column>
+          <p-column field="problem.shape" header="Shape" [sortable]="true">
+            <ng-template let-a="rowData" pTemplate="body">
+              {{a.problem.Shape}}
+            </ng-template>
+          </p-column>
+          <p-column field="problem.margin" header="Margin" [sortable]="true">
+            <ng-template let-a="rowData" pTemplate="body">
+              {{a.problem.Margin}}
+            </ng-template>
+          </p-column>
+          <p-column field="problem.dencity" header="Dencity" [sortable]="true">
+            <ng-template let-a="rowData" pTemplate="body">
+              {{a.problem.Dencity}}
+            </ng-template>
+          </p-column>
+
+          <p-column field="solution" header="Severité" [sortable]="true" rowspan="2"></p-column>
+          <p-column field="" header="Validité stochastique" [sortable]="true" rowspan="2">
+            <ng-template let-a="rowData" pTemplate="body">
+              {{a.validity.stochastique}}
+            </ng-template></p-column>
+          <p-column field="date_save" header="Date" [sortable]="true" rowspan="2">
+            <ng-template pTemplate="body" let-order="rowData">
+              {{order.date_save | date:'short'}}
+            </ng-template></p-column>
+          <p-column field="date_maj" header="Modifie" [sortable]="true" rowspan="2">
+            <ng-template pTemplate="body" let-order="rowData">
+              {{order.date_maj | date:'short'}}
+            </ng-template></p-column>
+          <p-column field="by" header="Par" [sortable]="true" rowspan="2"></p-column>
+          <p-column field="" header="Actions" [style]="{'width':'90px'}" rowspan="2">
+            <ng-template let-method="rowData" pTemplate="body">
+              <i class="fa fa-trash" data-toggle="modal" data-target="#onCas" aria-hidden="true" style="cursor: pointer; margin-right: 10px" (click)="selectCas(cas)"> </i>
+              <i class="fa fa-edit " style="cursor: pointer"  (click)="edittMethod(method)" aria-hidden="true"></i>
+            </ng-template>
+          </p-column>
+          <p-column   header="Status" [sortable]="true" [style]="{'width':'90px'}" rowspan="2">
+            <ng-template let-result="rowData" pTemplate="body">
+              <i *ngIf="(result.solution==0)" class="fa fa-times  fail"> </i>
+              <i *ngIf="!(result.solution==0)" class="fa fa-check success" aria-hidden="true"></i>
+            </ng-template>
+          </p-column>
+          <p-column [style]="{'width':'38px' ,'height':'35px', 'background': '#f4f4f4','border':'0'  }"
+                    selectionMode="multiple" rowspan="2"></p-column>
+
+        </p-dataTable>
+
+
+        <p-dataTable *ngIf="!cancer" #dt [value]="casecancer"  [rows]="5" [paginator]="true" [pageLinks]="3"
+                     [rowsPerPageOptions]="[5,10,20]" sortMode="multiple"
+                     exportFilename="casethyroid" [(selection)]="selectedCasecancer"
+                     [metaKeySelection]="false" [style]="{'font-size': '12px'}"
+                     [responsive]="true" [headerCheckboxToggleAllPages]="true" [globalFilter]="gb" #dt>
+          <p-header>
+
+            <div class="ui-helper-clearfix">
+              <button type="button" class="btn btn-success" pButton icon="fa-file-o" iconPos="left" label="Exporter tout" (click)="dt.exportCSV()"
+                      style="float:left"></button>
+              <button type="button" class="btn btn-success" pButton icon="fa-file" iconPos="left" label="Exporter selected"
+                      (click)="dt.exportCSV({selectionOnly:true})" style="float:right"></button>
+
+            </div>
+          </p-header>
+          <p-headerColumnGroup>
+            <p-row>
+              <p-column   header="Problème" colspan="5" [style]="{'width':'250px'}"></p-column>
+               <p-column   header="Severité" [sortable]="true" rowspan="2"></p-column>
+              <p-column   header="Validité stochastique" [sortable]="true" rowspan="2">
+               </p-column>
+              <p-column   header="Date" [sortable]="true" rowspan="2"></p-column>
+              <p-column   header="Modifie" [sortable]="true" rowspan="2"></p-column>
+              <p-column  header="Par" [sortable]="true" rowspan="2"></p-column>
+              <p-column  header="Actions" [style]="{'width':'90px'}" rowspan="2">
+              </p-column>
+              <p-column  header="Status"  [sortable]="true" [style]="{'width':'90px'}" rowspan="2">
+
+              </p-column>
+              <p-column [style]="{'width':'38px' ,'height':'35px', 'background': '#f4f4f4','border':'0'  }"
+                        selectionMode="multiple" rowspan="2"></p-column>
+            </p-row>
+
+            <p-row>
+              <p-column field="problem.T3" header="T3" [sortable]="true"  >
+                <ng-template let-a="rowData" pTemplate="body">
+                  {{a.problem.T3}}
+                </ng-template>
+              </p-column>
+              <p-column field="problem.Thyro"  header="Thyro" [sortable]="true">
+                <ng-template let-a="rowData" pTemplate="body">
+                  {{a.problem.Thyro}}
+                </ng-template>
+              </p-column>
+              <p-column field="problem.Trido" header="Trido" [sortable]="true">
+                <ng-template let-a="rowData" pTemplate="body">
+                  {{a.problem.Trido}}
+                </ng-template>
+              </p-column>
+              <p-column field="problem.TSH" header="TSH" [sortable]="true">
+                <ng-template let-a="rowData" pTemplate="body">
+                  {{a.problem.TSH}}
+                </ng-template>
+              </p-column>
+              <p-column field="problem.TS" header="TS" [sortable]="true">
+                <ng-template let-a="rowData" pTemplate="body">
+                  {{a.problem.TS}}
+                </ng-template>
+              </p-column>
+            </p-row>
+          </p-headerColumnGroup>
+          <p-column field="problem.T3"  header="T3" [sortable]="true"  >
+
+          </p-column>
+          <p-column field="problem.Thyro"  header="Thyro" [sortable]="true">
+
+          </p-column>
+          <p-column field="problem.Trido" header="Trido" [sortable]="true">
+
+          </p-column>
+          <p-column field="problem.TSH" header="TSH" [sortable]="true">
+
+          </p-column>
+          <p-column field="problem.TS" header="TS" [sortable]="true">
+
+          </p-column>
+
+          <p-column field="solution" header="Severité" [sortable]="true" rowspan="2"></p-column>
+          <p-column field="validity.stochastique" header="Validité stochastique" [sortable]="true" rowspan="2">
+         </p-column>
+          <p-column field="date_save" header="Date" [sortable]="true" rowspan="2">
+            <ng-template pTemplate="body" let-order="rowData">
+            {{order.date_save | date:'short'}}
+          </ng-template></p-column>
+          <p-column field="date_maj" header="Modifie" [sortable]="true" rowspan="2">
+            <ng-template pTemplate="body" let-order="rowData">
+            {{order.date_maj | date:'short'}}
+          </ng-template></p-column>
+          <p-column field="by" header="Par" [sortable]="true" rowspan="2"></p-column>
+          <p-column field="" header="Actions" [style]="{'width':'90px'}" rowspan="2">
+            <ng-template let-method="rowData" pTemplate="body">
+              <i class="fa fa-trash" data-toggle="modal" data-target="#onCas" aria-hidden="true" style="cursor: pointer; margin-right: 10px" (click)="selectCas(cas)"> </i>
+              <i class="fa fa-edit " style="cursor: pointer"  (click)="edittMethod(method)" aria-hidden="true"></i>
+            </ng-template>
+          </p-column>
+          <p-column   header="Status" [sortable]="true" [style]="{'width':'90px'}" rowspan="2">
+            <ng-template let-result="rowData" pTemplate="body">
+              <i *ngIf="(result.solution==0)" class="fa fa-times  fail"> </i>
+              <i *ngIf="!(result.solution==0)" class="fa fa-check success" aria-hidden="true"></i>
+            </ng-template>
+          </p-column>
+          <p-column [style]="{'width':'38px' ,'height':'35px', 'background': '#f4f4f4','border':'0'  }"
+                    selectionMode="multiple" rowspan="2"></p-column>
+
+        </p-dataTable>
+      </nb-card-body>
     </nb-card>
   </div>
 </div>
+
+
+
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-sm">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Supression des cas</h4>
+      </div>
+      <div class="modal-body">
+        <p>Êtes-vous sûr de vouloir supprimer les cas sélectionnés??</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+
+        <button type="button"  class="btn btn-danger" data-dismiss="modal"  (click)="delete($event)" >Supprimer</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div id="onCas" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-sm">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Supression d'un cas</h4>
+      </div>
+      <div class="modal-body">
+        <p>Êtes-vous sûr de vouloir supprimer le cas sélectionné?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+
+        <button type="button"  class="btn btn-danger" data-dismiss="modal"  (click)="delete1($event)" >Supprimer</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+<div id="ajoutModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-sm">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Ajouter un cas</h4>
+      </div>
+      <form *ngIf="cancer"  [formGroup]='form' (ngSubmit)="onSubmit(form.value)" class="form-horizontal" >
+
+      <div  class="modal-body">
+          <div class="form-group">
+            <input required type="Number" formControlName='BI'  min="1" max="5" class="form-control" id="exampleInputEmail1" placeholder="BI">
+          </div>
+          <div class="form-group">
+            <input required type="Number" formControlName='age'  class="form-control" id="exampleInputPassword1" placeholder="Age">
+          </div>
+          <div class="form-group">
+            <select required formControlName='shape' class="form-control">
+              <option value="" selected disabled>Shape</option>
+              <option value="1" >Round</option>
+              <option value="2">Oval</option>
+              <option value="3">lobular</option>
+              <option value="4">Irregular</option>
+
+            </select>          </div>
+          <div class="form-group">
+            <select required formControlName='margin' class="form-control"  >
+              <option value="" selected disabled>Margin</option>
+              <option value="1" >Circumscribed</option>
+              <option value="2">Microlobulated</option>
+              <option value="3">Obscured</option>
+              <option value="4">Ill-defined</option>
+              <option value="5">Spiculated</option>
+
+            </select>                  </div>
+          <div class="form-group">
+            <select required formControlName='dencity' class="form-control"  >
+              <option value="" selected disabled>Dencity</option>
+              <option value="1" >High</option>
+              <option value="2">ISO</option>
+              <option value="3">Low</option>
+              <option value="4">Fat-containing</option>
+            </select>
+          </div>
+        <div class="form-group">
+          <select required formControlName='solution' class="form-control"  >
+            <option value="" selected disabled>Solution</option>
+            <option value="0" >Benign</option>
+            <option value="1">Malignant</option>
+
+          </select>
+        </div>
+</div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+
+        <button  type="submit"  [disabled]="!form1.valid"  class="btn btn-success"    >Ajouter</button>
+      </div>
+      </form>
+      <form *ngIf="!cancer"  [formGroup]='form1' (ngSubmit)="onSubmit1(form1.value)" class="form-horizontal" >
+
+        <div  class="modal-body">
+          <div class="form-group">
+
+            <input required type="Number" class="form-control" formControlName='T3' placeholder="T3">
+          </div>
+          <div class="form-group">
+            <input required type="Number" class="form-control" formControlName='Thyro' placeholder="Thyro">
+          </div>
+          <div class="form-group">
+            <input required type="Number" class="form-control" formControlName='Trido' placeholder="Trido">
+          </div>
+          <div class="form-group">
+            <input required type="Number" class="form-control" formControlName='TSH' placeholder="TSH">
+          </div>
+          <div class="form-group">
+            <input required type="Number" class="form-control" formControlName='TS' placeholder="TS">
+          </div>
+          <div class="form-group">
+            <select required formControlName='solution' class="form-control"  >
+              <option value="" selected disabled>Solution</option>
+              <option value="1" >Normal</option>
+              <option value="2">Hyper</option>
+              <option value="3">Hypo</option>
+
+            </select>
+          </div>
+
+
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+
+          <button  type="submit"     [disabled]="!form1.valid"   class="btn btn-success" data-dismiss="modal"   >Ajouter</button>
+        </div>
+      </form>
+
+
+    </div>
+
+  </div>
+</div>
+
+
+
+<div id="editModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-sm">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modifier un cas</h4>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to delete the selected methods?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+
+        <button type="button"  class="btn btn-danger" data-dismiss="modal"  (click)="delete($event)" >Modifier</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+

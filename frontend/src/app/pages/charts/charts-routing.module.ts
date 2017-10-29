@@ -8,7 +8,7 @@ import { ChartjsComponent } from './chartjs/chartjs.component';
 
 const routes: Routes = [{
   path: '',
-  component: ChartsComponent,
+  component: D3Component,
   children: [{
     path: 'echarts',
     component: EchartsComponent,

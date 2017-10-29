@@ -1,57 +1,89 @@
+
 <div class="row">
   <div class="col-md-12">
     <nb-card>
       <nb-card-header>Résolution</nb-card-header>
-      <div class="row">
-      <div class="col-md-3"></div>
-      <nb-card-body class="col-md-6">
-        <form>
+      <nb-card-body >
+        <div *ngIf="found" class="alert alert-info alert-dismissable">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          <strong> La solution est : </strong>
+          <div *ngIf="cancer">
+          <div  *ngIf="solution==0">Benign</div>
+            <div *ngIf="solution==1">Malignant</div>
+        </div>
+          <div *ngIf="!cancer">
+            <div  *ngIf="solution==1">Normal</div>
+            <div *ngIf="solution==2">Hyper</div>
+            <div *ngIf="solution==3">Hypo</div>
+          </div>
+        </div>
+        <form *ngIf="cancer" [formGroup]='form' (ngSubmit)="onSubmit(form.value)" class="form-horizontal" class="col-md-7">
           <div class="form-group">
-            <label for="exampleInputEmail1">Nom attribut 1 </label>
-            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nom attribut 1">
+            <input required type="Number" formControlName='BI'  min="1" max="5" class="form-control" id="exampleInputEmail1" placeholder="BI">
           </div>
           <div class="form-group">
-            <label for="exampleInputPassword1">Nom attribut 2</label>
-            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Nom attribut 2">
+            <input required type="Number" formControlName='age'  class="form-control" id="exampleInputPassword1" placeholder="Age">
           </div>
           <div class="form-group">
-            <label for="exampleInputEmail1">Nom attribut 3 </label>
-            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nom attribut 1">
-          </div>
+            <select required formControlName='shape' class="form-control">
+              <option value="" selected disabled>Shape</option>
+              <option value="1" >Round</option>
+              <option value="2">Oval</option>
+              <option value="3">lobular</option>
+              <option value="4">Irregular</option>
+
+            </select>          </div>
           <div class="form-group">
-            <label for="exampleInputPassword1">Nom attribut 4</label>
-            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Nom attribut 2">
-          </div>
+            <select required formControlName='margin' class="form-control"  >
+              <option value="" selected disabled>Margin</option>
+              <option value="1" >Circumscribed</option>
+              <option value="2">Microlobulated</option>
+              <option value="3">Obscured</option>
+              <option value="4">Ill-defined</option>
+              <option value="5">Spiculated</option>
+
+            </select>                  </div>
           <div class="form-group">
-            <label for="exampleInputPassword1">Nom attribut 5</label>
-            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Nom attribut 2">
-          </div>
-          <div class="row ">
-            <button type="button" class="btn btn-success  space">Résoudre</button>
-            <button type="button" class="btn btn-success pull-right">Fournir une solution</button>
-          </div>
-          <div class="form-group">
-            <label for="exampleInputPassword1">Classe</label>
-            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Nom classe">
-          </div>
-          <div class="form-group">
-            <label>Classe</label>
-            <select class="form-control">
-              <option>Minsk</option>
-              <option>Gomel</option>
-              <option>Brest</option>
-              <option>Grodno</option>
-              <option>Mogilev</option>
+            <select required formControlName='dencity' class="form-control"  >
+              <option value="" selected disabled>Dencity</option>
+              <option value="1" >High</option>
+              <option value="2">ISO</option>
+              <option value="3">Low</option>
+              <option value="4">Fat-containing</option>
             </select>
           </div>
-          <div class="form-group row">
-            <div class="offset-sm-3 col-sm-9">
-              <button type="submit" class="btn btn-primary">Sauvgarder</button>
-            </div>
+          <div class="row pull-right ">
+            <button [disabled]="!form.valid" type="submit" class="btn btn-success  ">Résoudre</button>
           </div>
+
         </form>
+
+        <form *ngIf="!cancer" [formGroup]='form1' (ngSubmit)="onSubmit1(form.value)" class="form-horizontal" class="col-md-7">
+          <div class="form-group">
+
+            <input required type="Number" class="form-control" formControlName='T3' placeholder="T3">
+          </div>
+          <div class="form-group">
+            <input required type="Number" class="form-control" formControlName='Thyro' placeholder="Thyro">
+          </div>
+          <div class="form-group">
+            <input required type="Number" class="form-control" formControlName='Trido' placeholder="Trido">
+          </div>
+          <div class="form-group">
+            <input required type="Number" class="form-control" formControlName='TSH' placeholder="TSH">
+          </div>
+          <div class="form-group">
+            <input required type="Number" class="form-control" formControlName='TS' placeholder="TS">
+          </div>
+
+          <div class="row pull-right ">
+            <button [disabled]="!form1.valid" type="submit" class="btn btn-success  ">Résoudre</button>
+          </div>
+
+        </form>
+
       </nb-card-body>
-      </div>
+
     </nb-card>
   </div>
 </div>

@@ -1,0 +1,206 @@
+<div class="row">
+
+  <div class="col-md-12">
+    <nb-card>
+      <nb-card-header class="row ">
+        <div id="custom-search-input" class=" col-lg-6 col-md-6">
+          <div class="input-group ">
+            <input required type="text" pInputText #gb class="  search-query form-control" placeholder="Enter a key word"/>
+            <span class="input-group-btn">
+         <button class="btn btn-success" type="button">
+          <span class=" fa fa-search"></span>
+        </button>
+      </span>
+          </div>
+        </div>
+        <div class=" actions pull-right">
+          <i (click)="refresh($event)" class="fa fa-refresh fa-lg"></i>
+          <i  data-toggle="modal" data-target="#ajoutModal" aria-hidden="true" class="fa fa-plus-circle fa-lg" ></i>
+          <i class="fa fa-times-circle  fa-lg" data-toggle="modal" data-target="#myModal" aria-hidden="true"></i>
+        </div>
+      </nb-card-header>
+      <nb-card-body class="col-md-12">
+        <div *ngIf="error" class="alert alert-danger alert-dismissable">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          <strong> Opération non autorisée </strong> Vous n'êtes pas autorisé à modifier les cas sélectionnés!
+        </div>
+        <div *ngIf="deleteError" class="alert alert-danger alert-dismissable">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          <strong> Opération non autorisée </strong> Vous n'êtes pas autorisé à supprimer les cas sélectionnés!        </div>
+        <p-dataTable  #dt [value]="casecancer" [rows]="5"  [paginator]="true" [pageLinks]="3"
+                     [rowsPerPageOptions]="[5,10,20]" sortMode="multiple"
+                     exportFilename="casecancer" [(selection)]="selectedCasecancer"
+                     [metaKeySelection]="false"
+                     [responsive]="true" [headerCheckboxToggleAllPages]="true" [globalFilter]="gb" [style]="{'font-size': '12px'}" #dt>
+          <p-header>
+            <div class="ui-helper-clearfix">
+              <button type="button" class="btn btn-success" pButton icon="fa-file-o" iconPos="left" label="Exporter tout" (click)="dt.exportCSV()"
+                      style="float:left"></button>
+              <button type="button" class="btn btn-success" pButton icon="fa-file" iconPos="left" label="Exporter selected"
+                      (click)="dt.exportCSV({selectionOnly:true})" style="float:right"></button>
+            </div>
+          </p-header>
+          <p-column field="regle" header="Règles" [sortable]="true" [style]="{'width':'300px'}"></p-column>
+          <p-column field="confiance" header="Confiance" [sortable]="true"></p-column>
+          <p-column field="generalite" header="Généralités" [sortable]="true"></p-column>
+          <p-column field="date_save" header="Creation" [sortable]="true" rowspan="2">
+            <ng-template pTemplate="body" let-order="rowData">
+              {{order.date_save | date:'short'}}
+            </ng-template></p-column>
+          <p-column field="date_maj" header="Modifie" [sortable]="true" rowspan="2">
+            <ng-template pTemplate="body" let-order="rowData">
+              {{order.date_maj | date:'short'}}
+            </ng-template></p-column>          <p-column field="by" header="Par" [sortable]="true"></p-column>
+          <p-column field="" header="Actions" [style]="{'width':'90px'}">
+            <ng-template let-method="rowData" pTemplate="body">
+              <i class="fa fa-trash" (click)="selectMethod(method)"> </i>
+              <i class="fa fa-edit " (click)="edittMethod(method)" aria-hidden="true"></i>
+
+            </ng-template>
+          </p-column>
+          <p-column field="fail" header="Status" [sortable]="true" [style]="{'width':'90px'}">
+
+            <ng-template let-result="rowData" pTemplate="body">
+              <i *ngIf="result.fail" class="fa fa-times  fail"> </i>
+              <i *ngIf="!result.fail" class="fa fa-check success" aria-hidden="true"></i>
+
+            </ng-template>
+          </p-column>
+          <p-column [style]="{'width':'38px' ,'height':'35px', 'background': '#f4f4f4','border':'0'  }"
+                    selectionMode="multiple"></p-column>
+
+        </p-dataTable>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>
+
+
+<!-- Modal -->
+
+
+
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-sm">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Supression des cas</h4>
+      </div>
+      <div class="modal-body">
+        <p>Êtes-vous sûr de vouloir supprimer les cas sélectionnés??</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+
+        <button type="button"  class="btn btn-danger" data-dismiss="modal"  (click)="delete($event)" >Supprimer</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div id="onCas" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-sm">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Supression d'un cas</h4>
+      </div>
+      <div class="modal-body">
+        <p>Êtes-vous sûr de vouloir supprimer le cas sélectionné?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+
+        <button type="button"  class="btn btn-danger" data-dismiss="modal"  (click)="delete1($event)" >Supprimer</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+<div id="ajoutModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-sm">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Ajouter un cas</h4>
+      </div>
+
+      <form  [formGroup]='form' (ngSubmit)="onSubmit1(form.value)" class="form-horizontal" >
+
+        <div  class="modal-body">
+          <div class="form-group">
+
+            <input required type="Number" class="form-control" formControlName='T3' placeholder="T3">
+          </div>
+          <div class="form-group">
+            <input required type="Number" class="form-control" formControlName='Thyro' placeholder="Thyro">
+          </div>
+          <div class="form-group">
+            <input required type="Number" class="form-control" formControlName='Trido' placeholder="Trido">
+          </div>
+          <div class="form-group">
+            <input required type="Number" class="form-control" formControlName='TSH' placeholder="TSH">
+          </div>
+          <div class="form-group">
+            <input required type="Number" class="form-control" formControlName='TS' placeholder="TS">
+          </div>
+          <div class="form-group">
+            <select required formControlName='solution' class="form-control"  >
+              <option value="" selected disabled>Solution</option>
+              <option value="1" >Normal</option>
+              <option value="2">Hyper</option>
+              <option value="3">Hypo</option>
+
+            </select>
+          </div>
+
+
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+
+          <button  type="submit"     [disabled]="!form.valid"   class="btn btn-success" data-dismiss="modal"   >Ajouter</button>
+        </div>
+      </form>
+
+
+    </div>
+
+  </div>
+</div>
+
+
+
+<div id="editModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-sm">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modifier un cas</h4>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to delete the selected methods?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+
+        <button type="button"  class="btn btn-danger" data-dismiss="modal"  (click)="delete($event)" >Modifier</button>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -3,7 +3,16 @@ import { NgModule } from '@angular/core';
 import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
-const routes: Routes = [{
+const routes: Routes = [
+  {
+    path: 'login',
+    loadChildren: 'app/pages/login/login.module#LoginModule'
+  },
+  {
+    path: 'register',
+    loadChildren: 'app/pages/register/register.module#RegisterModule'
+  },
+  {
   path: '',
   component: PagesComponent,
   children: [{
@@ -17,13 +26,13 @@ const routes: Routes = [{
     loadChildren: './case-extraction/case-extraction.module#CaseExtractionModule',
   }, {
     path: 'rule-extraction',
-    loadChildren: './components/components.module#ComponentsModule',
+    loadChildren: './rule-extraction/rule-extraction.module#RuleExtractionModule',
   }, {
     path: 'dashboard',
-    loadChildren: './maps/maps.module#MapsModule',
+    loadChildren: './charts/charts.module#ChartsModule',
   }, {
     path: 'settings',
-    loadChildren: './charts/charts.module#ChartsModule',
+    loadChildren: './setting/setting.module#SettingModule',
   }, {
     path: 'help',
     loadChildren: './editors/editors.module#EditorsModule',

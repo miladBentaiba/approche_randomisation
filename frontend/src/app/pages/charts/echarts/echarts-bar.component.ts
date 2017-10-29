@@ -38,7 +38,8 @@ export class EchartsBarComponent implements AfterViewInit, OnDestroy {
         xAxis: [
           {
             type: 'category',
-            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+            data: ['Maladie de la thyroide (RàPC)','Maladie de la thyroide (RàPC +Randomisation)',
+              'Cancer du sein (RàPC)', 'Cancer du sein (RàPC +Randomisation)'],
             axisTick: {
               alignWithLabel: true,
             },
@@ -79,7 +80,7 @@ export class EchartsBarComponent implements AfterViewInit, OnDestroy {
             name: 'Score',
             type: 'bar',
             barWidth: '60%',
-            data: [10, 52, 200, 334, 390, 330, 220],
+            data: [78.16, 95.53, 79.71 , 96.84],
           },
         ],
       };

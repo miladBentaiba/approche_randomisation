@@ -1,0 +1,47 @@
+<div class="auth-main">
+  <div class="auth-block">
+    <h1>Singup to Pandora</h1>
+
+
+    <form [formGroup]="form" class="form-horizontal"    (ngSubmit)="onSubmit(form.value)"  #f="ngForm"  novalidate>
+      <div class="form-group row" [ngClass]="{'has-error': (!name.valid && name.touched), 'has-success': (name.valid && name.touched)}">
+        <label for="name" class="col-sm-2 control-label">Nom</label>
+
+        <div class="col-sm-10">
+          <input [formControl]="name" name="name"  type="text" class="form-control" id="name" placeholder="Nom">
+        </div>
+      </div>
+      <div class="form-group row" [ngClass]="{'has-error': (!email.valid && email.touched), 'has-success': (email.valid && email.touched)}">
+        <label for="email" class="col-sm-2 control-label">E-mail</label>
+
+        <div class="col-sm-10">
+          <input [formControl]="email" type="email"   class="form-control" id="email" placeholder="E-mail">
+        </div>
+      </div>
+      <div class="form-group row" [ngClass]="{'has-error': (!password.valid && password.touched), 'has-success': (password.valid && password.touched)}">
+        <label for="password" class="col-sm-2 control-label">Mot de passe</label>
+
+        <div class="col-sm-10">
+          <input [formControl]="password"  type="password" class="form-control" id="password"   placeholder="Mot de passe">
+        </div>
+      </div>
+      <div class="form-group row" [ngClass]="{'has-error': (!repeatPassword.valid && repeatPassword.touched), 'has-success': (repeatPassword.valid && repeatPassword.touched)}">
+        <label for="inputPassword4" class="col-sm-2 control-label">Confirmer</label>
+
+        <div class="col-sm-10">
+          <input [formControl]="repeatPassword" type="password" class="form-control" id="inputPassword4" placeholder="Confirmer">
+          <span *ngIf="!form.valid && (password.touched || repeatPassword.touched)" class="help-block sub-little-text text-danger">Les mots de passe ne correspondent pas
+.</span>
+        </div>
+
+      </div>
+      <div class="form-group row">
+        <div class="offset-sm-2 col-sm-10   ">
+          <button [disabled]="!f.form.valid" type="submit" class="btn btn-primary btn-auth pull-right">S'inscrire</button>
+        </div>
+      </div>
+    </form>
+    <a routerLink="/pages/login" class="auth-link">Vous avez déjà un compte Pandora? Se connecter!</a>
+
+  </div>
+</div>
