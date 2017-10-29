@@ -1,0 +1,28 @@
+@import 'conf/conf';
+#tree-view .tree {
+  & .node-value {
+    color: $default;
+  }
+  & .folding {
+    &.node-expanded::before {
+      color: $default;
+    }
+    &.node-collapsed::before  {
+      color: $default;
+    }
+    &.node-leaf::before {
+      color: $default;
+    }
+  }
+  & .over-drop-target {
+    border: 4px solid ghost$default;
+  }
+  & .node-value{
+    & .node-selected::after {
+      background-color: $default;
+    }
+    &:after {
+      background-color: $default;
+    }
+  }
+}
