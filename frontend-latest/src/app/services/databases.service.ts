@@ -61,7 +61,7 @@ getDatabase(id): Observable<any>
                         reject(xhr.response);
                     }
                 }
-            }
+            };
             xhr.open("POST", url, true);
             xhr.send(formData);
         });
@@ -88,7 +88,7 @@ getDatabase(id): Observable<any>
                         reject(xhr.response);
                     }
                 }
-            }
+            };
             xhr.open("POST", this.config.apiUrl + '/resources/databases/upload', true);
             xhr.send(formData);
         });

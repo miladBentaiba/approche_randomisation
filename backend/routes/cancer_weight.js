@@ -1,8 +1,8 @@
-var express = require('express');
- var  routerCancerWeight = express.Router();
- 
-var cancerWeightCtrl = require('../controllers/cancerWeightCtrl');
+import cancerWeightCtrl from '../controllers/weightCancerCtrl';
 
-routerCancerWeight.get('/cancerweight',cancerWeightCtrl.getAll);
- 
- module.exports = routerCancerWeight;
+const express = require('express');
+
+const routerCancerWeight = express.Router();
+routerCancerWeight.get('/cancerweight', cancerWeightCtrl.getAll);
+
+module.exports = routerCancerWeight;

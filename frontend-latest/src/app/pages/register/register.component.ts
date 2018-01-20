@@ -50,7 +50,7 @@ this.router.navigate(['/login']);
                                                             },
                                                             error => {
 
-                                                            });;
-      }
+                                                            });
+   }
   }
 }

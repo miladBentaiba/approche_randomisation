@@ -6,9 +6,9 @@ import {Observable, BehaviorSubject} from 'rxjs/Rx'
 import { AuthenticationService } from './authentication.service';
 
 @Injectable()
- 
+
 export class DatabasesService {
- 
+
   constructor(private http:Http, private config: AppConfig,private authenticationService:AuthenticationService) { }
  private extractData(res:Response) {
     let body = res.json();
@@ -25,24 +25,24 @@ private handleError(error:any) {
   // Uses http.get() to load a single JSON file
   getDatabases(): Observable<DatabsModel[]>
    {
- 
+
      return this.http.get(this.config.apiUrl + '/resources/databases/user/'+this.authenticationService.getEmail()).map(this.extractData);
 }
 
 getDatabase(id): Observable<any>
    {
- 
+
      return this.http.get(this.config.apiUrl + '/resources/databases/'+id).map(this.extractData);
 }
 
  getDatabasesByModality(modality:String): Observable<DatabsModel[]>
-   { 
+   {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
     return this.http.get(this.config.apiUrl + '/resources/databases/modality/'+modality).map(this.extractData);
 }
-     uploadDatabase(filesToUpload: Array<File>,name:String) {  
-       
+     uploadDatabase(filesToUpload: Array<File>,name:String) {
+
    }
     makeFileRequest(url: string, params: Array<string>, files: Array<File>,name:String) {
         return new Promise((resolve, reject) => {
@@ -61,12 +61,12 @@ getDatabase(id): Observable<any>
                         reject(xhr.response);
                     }
                 }
-            }
+            };
             xhr.open("POST", url, true);
             xhr.send(formData);
         });
     }
-   createDatabase(database: DatabsModel,files: Array<File>) {  
+   createDatabase(database: DatabsModel,files: Array<File>) {
        const headers = new Headers({ 'Content-Type': 'application/json' });
      const options = new RequestOptions({ headers: headers });
     const body = JSON.stringify(database);
@@ -88,14 +88,14 @@ getDatabase(id): Observable<any>
                         reject(xhr.response);
                     }
                 }
-            }
+            };
             xhr.open("POST", this.config.apiUrl + '/resources/databases/upload', true);
             xhr.send(formData);
         });
-    
- 
-      
-    
+
+
+
+
    }
    send( body, options)
    {
@@ -105,10 +105,10 @@ getDatabase(id): Observable<any>
                          .subscribe();
    }
   updateDatabase(database: DatabsModel) {
- 
+
  const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
-     
+
     const body = JSON.stringify(database);
     return this.http.put(this.config.apiUrl + '/resources/databases/'  + database._id,options) // ...using post request
                          .map(res => res.json()) // ...and calling .json() on the response to return data
@@ -116,14 +116,14 @@ getDatabase(id): Observable<any>
                          .subscribe();
   }
   deleteDatabase(database: DatabsModel):Observable<any> {
-   
+
  const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
-     
+
     const body = JSON.stringify(database);
     return this.http.delete(this.config.apiUrl + '/resources/databases/'  + database._id,options) // ...using post request
                          .map(res => res.json()) // ...and calling .json() on the response to return data
                          .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
   }
- 
+
 }

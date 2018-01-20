@@ -1,93 +1,55 @@
-var mongoose = require('mongoose');
-var CaseCancer = require('../models/case_cancer').CaseCancer;
-var RHSCancer = require('../models/RHS_cancer').RHSCancer;
+/* eslint no-underscore-dangle: 0 */
+const { CaseCancer } = require('../models/case_cancer');
 
-/** create function to create CaseCancer */
-exports.create = function (req, res) {
-    console.log( req.body);
-    var caseCancer =new CaseCancer({
-        "problem.BI": req.body.problem.BI,
-        "problem.age": req.body.problem.age,
-        "problem.shape": req.body.problem.shape,
-        "problem.margin": req.body.problem.margin,
-        "problem.dencity": req.body.problem.dencity,
-        "solution":req.body.solution,
-        "validity.coherence":req.body.validity.coherence,
-        "validity.stochastique":req.body.validity.stochastique,
-        "validity.regles":req.body.validity.regles,
-        "validity.expert":req.body.validity.expert,
-        "nb_occurence":req.body.validity.expert,
-        "by":req.body.by,
-        "date_maj":req.body.date_maj ,
-        "date_save":req.body.date_save
-    });
-    caseCancer.save(function (err, insertedItem) {
-if (err) {
-      console.log(err);
+exports.create = (req, res) => {
+  CaseCancer(req.body).save((err) => {
+    if (err) {
+      // console.log(err);
       res.send({
-        message: 'something went wrong'
+        message: 'something went wrong',
       });
     } else {
-    console.log(insertedItem._id);
+      // console.log(insertedItem._id);
       res.send({
-        message: 'the CaseCancer has been saved'
+        message: 'the CaseCancer has been saved',
       });
     }
-  // saved!
-})};
-/******************/
-exports.getAll = function (req, res) {
-    if (Object.keys(req.query).length == 0){
-        CaseCancer.find({}, function(err, dbs) {
-            var dbMap = [];
-            dbs.forEach(function(db) {
-                dbMap.push( db);
-            });
-            res.send(dbMap);
-        });
-    }
-    else {
-        console.log(JSON.stringify(req.query));
-        CaseCancer.findOne(req.query,function(err, dbs) {
-            res.send(dbs);
-        });
-    }
-};
-
-/** getCaseCancer function to get CaseCancer by id. */
-exports.get = function (req, res) {
-     CaseCancer.findById(req.params._id, function(err, db) {
-            if (err)
-                res.send(err);
-            res.json(db);
-     });
-};
-
-/** updateCaseCancer function to get CaseCancer by id. */
-exports.update = function (req, res) {
-   // This would likely be inside of a PUT request, since we're updating an existing document, hence the req.params.dbId.
-// Find the existing resource by ID
-CaseCancer.findOneAndUpdate(req.params._id, req.body, function (err, db) {  
-    // Handle any possible CaseCancer errors
-      if (err)
-                res.send(err);
-            res.json(db);
-   });
-}
-/** removeCaseCancer function to get CaseCancer by id. */
-exports.delete = function (req, res) {
-  CaseCancer.findOneAndRemove(req.params._id, function(err, result) {
-    if(err) { throw err; }
-    res.send(result);  
   });
 };
 
-/** getCaseCancer function to get CaseCancer by id.
-exports.resolve = function (req, res) {
-
-    CaseCancer.find({"problem.age":req.query.age}, function(err, db) {
-        if (err)
-            res.send(err);
-        res.json(db);
+exports.getAll = (req, res) => {
+  if (Object.keys(req.query).length === 0) {
+    CaseCancer.find({}, (err, dbs) => {
+      const dbMap = [];
+      dbs.forEach((db) => {
+        dbMap.push(db);
+      });
+      res.send(dbMap);
     });
-};*/
+  } else {
+    CaseCancer.findOne(req.query, (err, dbs) => {
+      res.send(dbs);
+    });
+  }
+};
+
+exports.get = (req, res) => {
+  CaseCancer.findById(req.params._id, (err, db) => {
+    if (err) { res.send(err); }
+    res.json(db);
+  });
+};
+
+exports.update = (req, res) => {
+  CaseCancer.findOneAndUpdate(req.params._id, req.body, (err, db) => {
+    if (err) { res.send(err); }
+    res.json(db);
+  });
+};
+
+exports.delete = (req, res) => {
+  CaseCancer.findOneAndRemove(req.params._id, (err, result) => {
+    if (err) { throw err; }
+    res.send(result);
+  });
+};

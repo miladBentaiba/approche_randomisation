@@ -1,11 +1,11 @@
-var express = require('express');
-var  routerWeightCancer = express.Router();
+const express = require('express');
 
-var weightCancerCtrl = require('../controllers/weightCancerCtrl');
+const routerWeightCancer = express.Router();
 
-routerWeightCancer.get('/weightcancer',weightCancerCtrl.getAll);
+const weightCancerCtrl = require('../controllers/weightCancerCtrl');
 
-/* SAVE Category */
+routerWeightCancer.get('/weightcancer', weightCancerCtrl.getAll);
+
 routerWeightCancer.post('/weightcancer/', weightCancerCtrl.create);
 
 module.exports = routerWeightCancer;

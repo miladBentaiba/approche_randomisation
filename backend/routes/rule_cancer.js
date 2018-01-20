@@ -1,21 +1,17 @@
-var express = require('express');
-var  routerRuleCancer = express.Router();
+const express = require('express');
 
-var ruleCancerCtrl = require('../controllers/ruleCancerCtrl');
+const routerRuleCancer = express.Router();
 
-routerRuleCancer.get('/rulecancer',ruleCancerCtrl.getAll);
+const ruleCancerCtrl = require('../controllers/ruleCancerCtrl');
 
-/* GET SINGLE Category BY ID */
+routerRuleCancer.get('/rulecancer', ruleCancerCtrl.getAll);
+
 routerRuleCancer.get('/rulecancer/:_id', ruleCancerCtrl.get);
 
-/* SAVE Category */
 routerRuleCancer.post('/rulecancer/', ruleCancerCtrl.create);
 
-/* UPDATE Category */
 routerRuleCancer.put('/rulecancer/:_id', ruleCancerCtrl.update);
 
-/* DELETE Category */
 routerRuleCancer.delete('/rulecancer/:_id', ruleCancerCtrl.delete);
-
 
 module.exports = routerRuleCancer;

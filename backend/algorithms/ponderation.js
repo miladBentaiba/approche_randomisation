@@ -1,125 +1,111 @@
-var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://localhost:27017/mydb";
+const { MongoClient } = require('mongodb');
 
-var fs = require('fs');
-	var parse = require('csv-parse');
-	var async = require('async');
+const url = 'mongodb://localhost:27017/mydb';
 
-//var cancer_size ;
-var thyroid_size;
-
-
-MongoClient.connect(url, function (err,db){
+MongoClient.connect(url, (err, db) => {
 	    if (err) throw err;
-	    db.collection("case_thyroid").find({}).count(function(err, result) {
-			if (err) throw err;
-			console.log(result);
-			thyroid_size = result;
-			thyroidPoids(thyroid_size,20);
-			db.close();
-		});
+	    db.collection('case_thyroid').find({}).count((err, result) => {
+    if (err) throw err;
+    console.log(result);
+    thyroid_size = result;
+    thyroidPoids(thyroid_size, 20);
+    db.close();
+  });
 });
 
 
+function thyroidPoids(thyroid_size, k) {
+  var k = 20;
+  let i = 0;
+  const n = 800;
+  const newObj = JSON.parse('{ "T3": 0, "Thyro":0, "Trido":0,"TSH":0,"TS":0}');
+  MongoClient.connect(url, (err, db) => {
+    const count = db.collection('case_thyroid').find({}, { validity: false, nb_occurence: false, date_maj: false }).toArray((err, allData) => {
+      if (err) throw err;
 
-function thyroidPoids(thyroid_size,k){
-	var k = 20;
-	var i=0;
-	var n= 800;
-	var newObj=JSON.parse('{ "T3": 0, "Thyro":0, "Trido":0,"TSH":0,"TS":0}');
-	MongoClient.connect(url, function (err,db){
-		var count= db.collection('case_thyroid').find({},{validity:false,nb_occurence:false,date_maj:false}).toArray(function(err, allData) {
-			if (err) throw err;
+	    	// console.log(allData);
 
-	    	//console.log(allData);
-
-		    var obj=JSON.parse('{ "T3": 0, "Thyro":0, "Trido":0,"TSH":0,"TS":0}');
-		    console.log("thyroid_size: "+thyroid_size);
-		    var loo;
-			for(loo=0; loo <n; loo++){
-			    var T3s = [];
-			    var Thyros = [];
-			    var Tridos = [];
-			    var TSs = [];
-			    var TSHs = [];
-
+		    var obj = JSON.parse('{ "T3": 0, "Thyro":0, "Trido":0,"TSH":0,"TS":0}');
+		    console.log(`thyroid_size: ${thyroid_size}`);
+		    let loo;
+      for (loo = 0; loo < n; loo++) {
+			    const T3s = [];
+			    const Thyros = [];
+			    const Tridos = [];
+			    const TSs = [];
+			    const TSHs = [];
 
 
-			    i=0;
-				do {
-						//choisir aléatoirement une instance de case_cancer
-					do{
-						var randomObject =Math.floor(Math.random() * thyroid_size-1);
-					}
-					while (randomObject < 0 || randomObject >= thyroid_size);
+			    i = 0;
+        do {
+          // choisir aléatoirement une instance de case_cancer
+          do {
+            var randomObject = Math.floor(Math.random() * thyroid_size - 1);
+          }
+          while (randomObject < 0 || randomObject >= thyroid_size);
 
-					i++;
-					//console.log("i= "+i+"andomObject: "+randomObject);
-					var obj=allData[randomObject];
-					//console.log(allData[i]);
+          i++;
+          // console.log("i= "+i+"andomObject: "+randomObject);
+          var obj = allData[randomObject];
+          // console.log(allData[i]);
 
-			        var T3 = Math.abs(allData[i].problem.T3-obj.problem.T3)/Math.max(allData[i].problem.T3,obj.problem.T3);
-					var Thyro=Math.abs(allData[i].problem.Thyro-obj.problem.Thyro)/Math.max(allData[i].problem.Thyro,obj.problem.Thyro);
-					var Trido=Math.abs(allData[i].problem.Trido-obj.problem.Trido)/Math.max(allData[i].problem.Trido,obj.problem.Trido);
-			        var TSH=Math.abs(allData[i].problem.TSH-obj.problem.TSH)/Math.max(allData[i].problem.TSH,obj.problem.TSH);
-			        var TS=(allData[i].problem.TS==0 && obj.problem.TS==0)? 0 : Math.abs(allData[i].problem.TS-obj.problem.TS)/Math.max(Math.abs(allData[i].problem.TS),Math.abs(obj.problem.TS));
-			        if(isNaN(TS))
-			        console.log("i: "+i+", loo: "+loo+", "+allData[i].problem.TS+", "+obj.problem.TS+", res: "+TS);
+			        const T3 = Math.abs(allData[i].problem.T3 - obj.problem.T3) / Math.max(allData[i].problem.T3, obj.problem.T3);
+          const Thyro = Math.abs(allData[i].problem.Thyro - obj.problem.Thyro) / Math.max(allData[i].problem.Thyro, obj.problem.Thyro);
+          const Trido = Math.abs(allData[i].problem.Trido - obj.problem.Trido) / Math.max(allData[i].problem.Trido, obj.problem.Trido);
+			        const TSH = Math.abs(allData[i].problem.TSH - obj.problem.TSH) / Math.max(allData[i].problem.TSH, obj.problem.TSH);
+			        const TS = (allData[i].problem.TS == 0 && obj.problem.TS == 0) ? 0 : Math.abs(allData[i].problem.TS - obj.problem.TS) / Math.max(Math.abs(allData[i].problem.TS), Math.abs(obj.problem.TS));
+			        if (isNaN(TS)) { console.log(`i: ${i}, loo: ${loo}, ${allData[i].problem.TS}, ${obj.problem.TS}, res: ${TS}`); }
 
-			        T3s[i]=T3;
-			        Thyros[i]=Thyro;
-			        Tridos[i]=Trido;
-			        TSHs[i]= TSH;
-			        TSs[i]=TS;
+			        T3s[i] = T3;
+			        Thyros[i] = Thyro;
+			        Tridos[i] = Trido;
+			        TSHs[i] = TSH;
+			        TSs[i] = TS;
+		    	} while (i < thyroid_size - 1);
+		    	T3s.sort(); newObj.T3 = (newObj.T3 - voisins(k, T3s) + antivoisins(k, T3s, thyroid_size)) / (2 * k);
+		    	Thyros.sort(); newObj.Thyro = (newObj.Thyro - voisins(k, Thyros) + antivoisins(k, Thyros, thyroid_size)) / (2 * k);
+		    	Tridos.sort(); newObj.Trido = (newObj.Trido - voisins(k, Tridos) + antivoisins(k, Tridos, thyroid_size)) / (2 * k);
+		    	TSHs.sort(); newObj.TSH = (newObj.TSH - voisins(k, TSHs) + antivoisins(k, TSHs, thyroid_size)) / (2 * k);
+		    	TSs.sort(); newObj.TS = (newObj.TS - voisins(k, TSs) + antivoisins(k, TSs, thyroid_size)) / (2 * k);
+      }
 
+      MongoClient.connect(url, (err, dbb) => {
+        if (err) throw err;
 
-		    	}while (i<thyroid_size-1);
-		    	T3s.sort();newObj.T3 = (newObj.T3 - voisins(k,T3s) + antivoisins(k,T3s, thyroid_size))/(2*k);
-		    	Thyros.sort();newObj.Thyro = (newObj.Thyro - voisins(k,Thyros) + antivoisins(k,Thyros, thyroid_size)) /(2*k);
-		    	Tridos.sort();newObj.Trido = (newObj.Trido - voisins(k,Tridos) + antivoisins(k,Tridos, thyroid_size)) / (2*k);
-		    	TSHs.sort();newObj.TSH = (newObj.TSH - voisins(k,TSHs) + antivoisins(k,TSHs, thyroid_size)) / (2*k);
-		    	TSs.sort();newObj.TS = (newObj.TS - voisins(k,TSs) + antivoisins(k,TSs, thyroid_size))/ (2*k);
-
-
-			}
-
-				MongoClient.connect(url, function(err, dbb) {
-				if (err) throw err;
-
-						dbb.collection("thyroid_weight").insertOne(newObj, function(err, res) {
-						if (err) throw err;
-						console.log("1 document inserted");
-					});
-					dbb.close();
-				});
-			db.close();
-		});
-	});
+        dbb.collection('thyroid_weight').insertOne(newObj, (err, res) => {
+          if (err) throw err;
+          console.log('1 document inserted');
+        });
+        dbb.close();
+      });
+      db.close();
+    });
+  });
 }
 
-function voisins(k, ages){
-	var sum = 0;
-	var l = 0;
-	do{
-		l++;
-		sum = sum + ages[l];
-	}while(l<k);
-	return sum;
+function voisins(k, ages) {
+  let sum = 0;
+  let l = 0;
+  do {
+    l++;
+    sum += ages[l];
+  } while (l < k);
+  return sum;
 }
 
-function antivoisins(k, ages, size){
-	var sum = 0;
-	var l = thyroid_size - k -1;
+function antivoisins(k, ages, size) {
+  let sum = 0;
+  let l = thyroid_size - k - 1;
 
-	do{
-		sum = sum + ages[l];
-		l++;
-	}while(l<thyroid_size-1);
-	return sum;
+  do {
+    sum += ages[l];
+    l++;
+  } while (l < thyroid_size - 1);
+  return sum;
 }
 
 
-/*MongoClient.connect(url, function (err,db){
+/* MongoClient.connect(url, function (err,db){
 	    if (err) throw err;
 
 	    var myobj = [
@@ -133,9 +119,9 @@ function antivoisins(k, ages, size){
 	    db.close();
 
 	});
-});*/
+}); */
 
-/*function insertThyroData(){
+/* function insertThyroData(){
     var newDate = new Date();
     console.log("Hi i am in");
     //remplissage de la base du cancer
@@ -168,19 +154,19 @@ function antivoisins(k, ages, size){
             console.log("done");
         });
     return true;
-}*/
+} */
 
-/*MongoClient.connect(url, function (err,db){
+/* MongoClient.connect(url, function (err,db){
 	var count= db.collection('case_cancer').count({}, function(err, res) {
 	    if (err) throw err;
     	//console.log("*******cancer size: "+res);
     	cancerPoids(res, 1);
 	    db.close();
 	});
-});*/
-//insertCancerData();
+}); */
+// insertCancerData();
 
-/*function cancerPoids(cancer_size,k){
+/* function cancerPoids(cancer_size,k){
 	var k = 20;
 	var i=0;
 	var n= 800;
@@ -247,11 +233,10 @@ function antivoisins(k, ages, size){
 			db.close();
 		});
 	});
-}*/
+} */
 
 
-
-/*function insertThyroidData(){
+/* function insertThyroidData(){
 	var newDate = new Date();
 	//remplissage de la base du cancer
 	var fs = require('fs');
@@ -291,7 +276,7 @@ function antivoisins(k, ages, size){
 }
 */
 
-/*function insertCancerData(){
+/* function insertCancerData(){
 	var newDate = new Date();
 	//remplissage de la base du cancer
 	var inputFile='thyroid.txt';
@@ -320,9 +305,9 @@ function antivoisins(k, ages, size){
 	fs.createReadStream(inputFile).pipe(parser);
 
 	return true;
-}*/
+} */
 
-/*function thyroidPoids(thyroid_size,k){
+/* function thyroidPoids(thyroid_size,k){
 	var k = 20;
 	var i=0;
 	var n= 800;
@@ -389,4 +374,4 @@ function antivoisins(k, ages, size){
 			db.close();
 		});
 	});
-}*/
+} */

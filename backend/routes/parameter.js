@@ -1,14 +1,13 @@
-var express = require('express');
-var  routerParameter = express.Router();
+const express = require('express');
 
-var parameterCtrl = require('../controllers/parameterCtrl');
+const routerParameter = express.Router();
 
-routerParameter.get('/parameter',parameterCtrl.getAll);
+const parameterCtrl = require('../controllers/parameterCtrl');
 
-/* SAVE Category */
+routerParameter.get('/parameter', parameterCtrl.getAll);
+
 routerParameter.post('/parameter/', parameterCtrl.create);
 
-/* UPDATE Category */
 routerParameter.put('/parameter', parameterCtrl.update);
 
 module.exports = routerParameter;

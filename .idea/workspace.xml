@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="db8f988a-dc8a-421e-8dac-c0d96e6d9c41" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/backend/public/help.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/backend/views/welcome.hbs" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Untitled Diagram.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/backend/algorithms/ponderation.js" afterPath="$PROJECT_DIR$/backend/algorithms/ponderation.js" />
+      <change beforePath="$PROJECT_DIR$/backend/algorithms/randomisation.js" afterPath="$PROJECT_DIR$/backend/algorithms/randomisation.js" />
+      <change beforePath="$PROJECT_DIR$/backend/algorithms/segmentationNiveau.js" afterPath="$PROJECT_DIR$/backend/algorithms/segmentationNiveau.js" />
+      <change beforePath="$PROJECT_DIR$/backend/algorithms/segmentationRHSCancer.js" afterPath="$PROJECT_DIR$/backend/algorithms/segmentationRHSCancer.js" />
+      <change beforePath="$PROJECT_DIR$/backend/app.js" afterPath="$PROJECT_DIR$/backend/app.js" />
+      <change beforePath="$PROJECT_DIR$/backend/config.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/backend/config.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/backend/config/passport.js" afterPath="$PROJECT_DIR$/backend/config/passport.js" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/authentication.js" afterPath="$PROJECT_DIR$/backend/controllers/authentication.js" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/cancerThyroidCtrl.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/cancerWeightCtrl.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/caseCancerCtrl.js" afterPath="$PROJECT_DIR$/backend/controllers/caseCancerCtrl.js" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/caseThyroidCtrl.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/lhsCancerCtrl.js" afterPath="$PROJECT_DIR$/backend/controllers/lhsCancerCtrl.js" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/lhsThyroidCtrl.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/niveauCtrl.js" afterPath="$PROJECT_DIR$/backend/controllers/niveauCtrl.js" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/parameterCtrl.js" afterPath="$PROJECT_DIR$/backend/controllers/parameterCtrl.js" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/profile.js" afterPath="$PROJECT_DIR$/backend/controllers/profile.js" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/rhsCancerCtrl.js" afterPath="$PROJECT_DIR$/backend/controllers/rhsCancerCtrl.js" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/rhsThyroidCtrl.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/ruleCancerCtrl.js" afterPath="$PROJECT_DIR$/backend/controllers/ruleCancerCtrl.js" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/ruleThyroidCtrl.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/thyroidWeightCtrl.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/weightCancerCtrl.js" afterPath="$PROJECT_DIR$/backend/controllers/weightCancerCtrl.js" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/weightThyroidCtrl.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/backend/esdoc.json" afterPath="$PROJECT_DIR$/backend/algorithms/blabla.js" />
+      <change beforePath="$PROJECT_DIR$/backend/generator.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/backend/graph.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/backend/isolate-000001ED36FB9670-v8.log" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/backend/lib/images.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/backend/lib/oauth2.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/backend/models/LHS_cancer.js" afterPath="$PROJECT_DIR$/backend/models/LHS_cancer.js" />
+      <change beforePath="$PROJECT_DIR$/backend/models/LHS_thyroid.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/backend/models/RHS_cancer.js" afterPath="$PROJECT_DIR$/backend/models/RHS_cancer.js" />
+      <change beforePath="$PROJECT_DIR$/backend/models/RHS_thyroid.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/backend/models/cancer_weight.js" afterPath="$PROJECT_DIR$/backend/models/cancer_weight.js" />
+      <change beforePath="$PROJECT_DIR$/backend/models/case_cancer.js" afterPath="$PROJECT_DIR$/backend/models/case_cancer.js" />
+      <change beforePath="$PROJECT_DIR$/backend/models/case_thyroid.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/backend/models/db.js" afterPath="$PROJECT_DIR$/backend/models/db.js" />
+      <change beforePath="$PROJECT_DIR$/backend/models/niveau.js" afterPath="$PROJECT_DIR$/backend/models/niveau.js" />
+      <change beforePath="$PROJECT_DIR$/backend/models/parameters.js" afterPath="$PROJECT_DIR$/backend/models/parameters.js" />
+      <change beforePath="$PROJECT_DIR$/backend/models/rule_cancer.js" afterPath="$PROJECT_DIR$/backend/models/rule_cancer.js" />
+      <change beforePath="$PROJECT_DIR$/backend/models/rule_thyroid.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/backend/models/thyroid_weight.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/backend/models/user.js" afterPath="$PROJECT_DIR$/backend/models/user.js" />
+      <change beforePath="$PROJECT_DIR$/backend/models/weight_cancer.js" afterPath="$PROJECT_DIR$/backend/models/weight_cancer.js" />
+      <change beforePath="$PROJECT_DIR$/backend/models/weight_thyroid.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/backend/my_data.out" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/backend/npm-debug.log.1005563615" afterPath="$PROJECT_DIR$/backend/algorithms/main.js" />
+      <change beforePath="$PROJECT_DIR$/backend/package.json" afterPath="$PROJECT_DIR$/backend/package.json" />
+      <change beforePath="$PROJECT_DIR$/backend/processed.txt" afterPath="$PROJECT_DIR$/backend/views/partials/footer.hbs" />
+      <change beforePath="$PROJECT_DIR$/backend/public/css/styles.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/backend/public/javascripts/upload.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/backend/rem.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/cancer_weight.js" afterPath="$PROJECT_DIR$/backend/routes/cancer_weight.js" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/case_cancer.js" afterPath="$PROJECT_DIR$/backend/routes/case_cancer.js" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/case_thyroid.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/index.js" afterPath="$PROJECT_DIR$/backend/routes/index.js" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/lhs_cancer.js" afterPath="$PROJECT_DIR$/backend/routes/lhs_cancer.js" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/lhs_thyroid.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/niveau.js" afterPath="$PROJECT_DIR$/backend/routes/niveau.js" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/parameter.js" afterPath="$PROJECT_DIR$/backend/routes/parameter.js" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/rhs_cancer.js" afterPath="$PROJECT_DIR$/backend/routes/rhs_cancer.js" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/rhs_thyroid.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/rule_cancer.js" afterPath="$PROJECT_DIR$/backend/routes/rule_cancer.js" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/rule_thyroid.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/thyroid_weight.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/weight_cancer.js" afterPath="$PROJECT_DIR$/backend/routes/weight_cancer.js" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/weight_thyroid.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/backend/test-setup.spec.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/backend/views/error.jade" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/backend/views/index.jade" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/backend/views/layout.jade" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/backend/views/test.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/frontend-latest/src/app/app.config.ts" afterPath="$PROJECT_DIR$/frontend-latest/src/app/app.config.ts" />
+      <change beforePath="$PROJECT_DIR$/frontend-latest/src/app/pages/register/register.component.ts" afterPath="$PROJECT_DIR$/frontend-latest/src/app/pages/register/register.component.ts" />
+      <change beforePath="$PROJECT_DIR$/frontend-latest/src/app/services/databases.service.ts" afterPath="$PROJECT_DIR$/frontend-latest/src/app/services/databases.service.ts" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/app.config.ts" afterPath="$PROJECT_DIR$/frontend/src/app/app.config.ts" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/register/register.component.ts" afterPath="$PROJECT_DIR$/frontend/src/app/pages/register/register.component.ts" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/services/databases.service.ts" afterPath="$PROJECT_DIR$/frontend/src/app/services/databases.service.ts" />
+      <change beforePath="$PROJECT_DIR$/npm-debug.log" afterPath="" />
+    </list>
+    <ignored path="$PROJECT_DIR$/.tmp/" />
+    <ignored path="$PROJECT_DIR$/temp/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="10" />
+    <option name="y" value="44" />
+    <option name="width" value="1346" />
+    <option name="height" value="675" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="HbShouldOpenHtmlAsHb" value="" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="db8f988a-dc8a-421e-8dac-c0d96e6d9c41" name="Default" comment="" />
+      <created>1516449696917</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1516449696917</updated>
+      <workItem from="1516449698327" duration="68000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="68000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="10" y="44" width="1366" height="715" extended-state="7" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+</project>
