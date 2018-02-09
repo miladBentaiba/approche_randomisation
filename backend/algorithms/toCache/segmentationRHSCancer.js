@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+/* const mongoose = require('mongoose');
 const { CaseCancer } = require('../models/case_cancer');
 const { RHSCancer } = require('../models/RHS_cancer');
 
@@ -55,4 +55,4 @@ CaseCancer.find({}, (err, dbs) => {
     // calculer la validité stochastique
   }
 });
-
+*/

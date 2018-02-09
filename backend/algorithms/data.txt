@@ -1,0 +1,42 @@
+[
+  {
+    "bi": 5,
+    "age": 67,
+    "shape": 3,
+    "margin": 5,
+    "dencity": 3,
+    "severity": 1
+  },
+  {
+      "bi": 4,
+      "age": 43,
+      "shape": 1,
+      "margin": 1,
+      "dencity": null,
+      "severity": 1
+  },
+  {
+      "bi": 4,
+      "age": 65,
+      "shape": 1,
+      "margin": null,
+      "dencity": 3,
+      "severity": 0
+  },
+  {
+      "bi": 5,
+      "age": 67,
+      "shape": 3,
+      "margin": 5,
+      "dencity": 3,
+      "severity": 1
+    },
+    {
+      "bi": 4,
+      "age": 70,
+      "shape": null,
+      "margin": null,
+      "dencity": 3,
+      "severity": 0
+    }
+]
